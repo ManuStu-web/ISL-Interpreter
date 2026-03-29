@@ -30,76 +30,48 @@ const Center = ({ isDark }) => {
 
         {/* Stop/Start Translation button */}
         <button
-          onClick={() => setIsTranslating(!isTranslating)}
-          className="
-             px-10 py-3
-              rounded-full
-              text-sm tracking-wide
-              backdrop-blur-2xl
-             border
-                transition-all duration-300"
-          style={{
-            background: "rgba(255,255,255,0.08)",
+  onClick={() => setIsTranslating(!isTranslating)}
+  className="
+    px-10 py-3
+    rounded-full
+    text-lg tracking-wide
+    border
+    hover:scale-105
+    transition-transform duration-300 ease-out
+    active:scale-95
+  "
+  style={{
+    
+    background: isDark
+      ? "rgba(255,255,255,0.08)"
+      : "#000000",
 
-            border: "1px solid rgba(255,255,255,0.25)",
+    color: "#ffffff",
 
-            boxShadow: `
-      0 8px 32px rgba(0,0,0,0.25),
-      inset 0 1px 0 rgba(255,255,255,0.35),
-      inset 0 -1px 0 rgba(255,255,255,0.08)
-    `,
+    border: isDark
+      ? "1px solid rgba(255,255,255,0.25)"
+      : "1px solid rgba(0,0,0,0.85)",
 
-            backdropFilter: "blur(25px)",
-            WebkitBackdropFilter: "blur(25px)",
+    boxShadow: isDark
+      ? `
+        0 8px 32px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.35),
+        inset 0 -1px 0 rgba(255,255,255,0.08)
+      `
+      : `
+        0 6px 18px rgba(0,0,0,0.25)
+      `,
 
-            color: isDark ? "#ffffff" : "#1a1a1a",
+    backdropFilter: isDark ? "blur(25px)" : "none",
+    WebkitBackdropFilter: isDark ? "blur(25px)" : "none",
 
-            fontFamily: "Playfair Display, serif",
-            minWidth: "180px",
-            cursor: "pointer",
-
-            /* smooth animation for everything */
-            transition: `
-      transform 0.25s ease,
-      background 0.4s ease,
-      border 0.4s ease,
-      box-shadow 0.4s ease,
-      color 0.3s ease
-    `
-          }}
-
-          onMouseEnter={(e) => {
-
-            e.currentTarget.style.transform = "scale(1.05)"
-
-
-            e.currentTarget.style.border = "1px solid rgba(120,160,255,0.55)"
-
-            e.currentTarget.style.boxShadow = `
-      0 0 25px rgba(120,160,255,0.35),
-      0 12px 40px rgba(0,0,0,0.45),
-      inset 0 1px 0 rgba(255,255,255,0.55),
-      inset 0 -1px 0 rgba(0,0,0,0.3)
-    `
-          }}
-
-          onMouseLeave={(e) => {
-
-            e.currentTarget.style.transform = "scale(1)"
-
-            e.currentTarget.style.background = "rgba(255,255,255,0.08)"
-
-            e.currentTarget.style.border = "1px solid rgba(255,255,255,0.25)"
-
-            e.currentTarget.style.boxShadow = `
-      0 8px 32px rgba(0,0,0,0.25),
-      inset 0 1px 0 rgba(255,255,255,0.35),
-      inset 0 -1px 0 rgba(255,255,255,0.08)
-    `
-          }}
-        >
-          {isTranslating ? "Stop Translation" : "Start Translation"}
-        </button>
+    fontFamily: "Playfair Display, serif",
+    minWidth: "180px",
+    cursor: "pointer"
+  }}
+>
+  {isTranslating ? "Stop Translation" : "Start Translation"}
+</button>
 
       </div>
 

@@ -8,11 +8,13 @@ const App = () => {
   const [isDark,setIsDark] = useState(true);
   return (
     <div className='min-h-screen flex flex-col justify-start' style={{
-      backgroundColor: isDark ? '#1a2235' : '#F5F0E8',
+      backgroundColor: isDark ? '#1a2235' : '#eeeded',
       transition: 'all 0.4s ease'}}>
       <NavBar isDark={isDark} setIsDark={setIsDark} />
       <Center isDark={isDark} />
       <Footer isDark={isDark} />
+
+      <About  />
     </div>
   )
 }
