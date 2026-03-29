@@ -14,7 +14,7 @@ const App = () => {
       <Center isDark={isDark} />
       <Footer isDark={isDark} />
 
-      <About  />
+      {/* <About  /> */}
     </div>
   )
 }
