@@ -30,21 +30,29 @@ const Camera = ({ isDark, isCameraOn }) => {
   }, [])
 
   return (
-    <div className='flex flex-col items-center gap-6'>
+    <div className="relative flex justify-center items-center">
+      
+      {/* Animated blob */}
       <div
+        className="absolute"
         style={{
           backgroundColor: isDark ? '#2d3f5e' : '#D4C4B0',
           borderRadius: blobShapes[shapeIndex],
-          padding: '4rem',
+          width: '520px',
+          height: '420px',
           boxShadow: isDark
             ? 'inset 0 4px 20px rgba(0,0,0,0.5), 0 8px 32px rgba(0,0,0,0.4)'
             : 'inset 0 4px 10px rgba(0,0,0,0.1), 0 6px 24px rgba(0,0,0,0.08)',
           transform: `scale(${scale})`,
           transition: 'border-radius 2s ease-in-out, transform 1s ease-in-out, background-color 0.4s ease',
         }}
-      >
+      />
+
+      {/* Camera stays fixed */}
+      <div className="relative z-10">
         <MainCamera isDark={isDark} isCameraOn={isCameraOn} />
       </div>
+
     </div>
   )
 }

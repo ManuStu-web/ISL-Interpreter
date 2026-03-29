@@ -10,18 +10,33 @@ const NavBar = ({ isDark, setIsDark }) => {
 
       <button
         onClick={() => setIsDark(!isDark)}
-        className='mt-2 px-5 py-2 rounded-full text-sm font-medium transition-all duration-300'
+        className="
+    h-14 w-14 flex items-center justify-center
+    rounded-full
+    backdrop-blur-xl
+    border border-white/20
+    shadow-xl
+    transition-all duration-300
+    hover:scale-110
+  "
         style={{
-          backgroundColor: isDark ? '#c9a96e' : '#8A9E7A',
-          color: '#ffffff',
-          border: 'none',
-          cursor: 'pointer'
-        }}>
-      
-        {isDark ? '☀️ Light Mode' : '🌙 Dark Mode'}
+          background: isDark
+            ? "rgba(255,255,255,0.08)"
+            : "rgba(255,255,255,0.45)",
+
+          boxShadow: isDark
+            ? "0 8px 32px rgba(0,0,0,0.5)"
+            : "0 8px 32px rgba(31,38,135,0.15)",
+
+          color: isDark ? "#fff" : "#1a1a1a"
+        }}
+      >
+        {isDark
+          ? <i className="ri-sun-line text-2xl"></i>
+          : <i className="ri-moon-line text-2xl"></i>}
       </button>
 
-    </div>
+    </div >
   )
 }
 

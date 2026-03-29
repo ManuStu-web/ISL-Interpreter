@@ -8,7 +8,7 @@ const Center = ({ isDark }) => {
   const [isTranslating, setIsTranslating] = useState(false)
 
   return (
-    <div className='flex flex-col items-center justify-center w-full mt-2 flex-1 gap-12'>
+    <div className='flex flex-col items-center justify-center w-full flex-1 gap-12 mt-30'>
 
       {/* Main row */}
       <div className='flex items-center justify-center w-full gap-16'>
@@ -30,23 +30,39 @@ const Center = ({ isDark }) => {
 
         {/* Stop/Start Translation button */}
         <button
-          onClick={() => setIsTranslating(!isTranslating)}
-          className='px-10 hover:scale-95 py-3 rounded-full text-sm tracking-wide transition-all duration-300'
-          style={{
-            backgroundColor: isTranslating
-              ? (isDark ? '#c9a96e' : '#111111')
-              : 'transparent',
-            color: isTranslating
-              ? (isDark ? '#1a2235' : '#ffffff')
-              : (isDark ? '#c9a96e' : '#111111'),
-            border: `1px solid ${isDark ? '#c9a96e' : '#111111'}`,
-            cursor: 'pointer',
-            fontFamily: 'Playfair Display, serif',
-            minWidth: '180px'
-          }}
-        >
-          {isTranslating ? 'Stop Translation' : 'Start Translation'}
-        </button>
+  onClick={() => setIsTranslating(!isTranslating)}
+  className="
+    px-10 py-3
+    rounded-full
+    text-sm tracking-wide
+    transition-all duration-300
+    backdrop-blur-2xl
+    border
+    hover:scale-95
+  "
+  style={{
+    background: "rgba(255,255,255,0.08)",
+
+    border: "1px solid rgba(255,255,255,0.25)",
+
+    boxShadow: `
+      0 8px 32px rgba(0,0,0,0.25),
+      inset 0 1px 0 rgba(255,255,255,0.35),
+      inset 0 -1px 0 rgba(255,255,255,0.08)
+    `,
+
+    backdropFilter: "blur(25px)",
+    WebkitBackdropFilter: "blur(25px)",
+
+    color: isDark ? "#ffffff" : "#1a1a1a",
+
+    fontFamily: "Playfair Display, serif",
+    minWidth: "180px",
+    cursor: "pointer"
+  }}
+>
+  {isTranslating ? "Stop Translation" : "Start Translation"}
+</button>
 
       </div>
 

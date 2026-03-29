@@ -2,7 +2,7 @@ import React from 'react'
 
 const Divider = ({ isDark }) => {
   return (
-    <div
+    <div className='ml-20'
       style={{
         width: '1px',
         height: '280px',
