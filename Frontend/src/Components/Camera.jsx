@@ -31,24 +31,50 @@ const Camera = ({ isDark, isCameraOn }) => {
 
   return (
     <div className="relative flex justify-center items-center">
-      
-      {/* Animated blob */}
+
+      {/* Blue Glass Blob */}
       <div
-        className="absolute"
+        className="absolute backdrop-blur-3xl"
         style={{
-          backgroundColor: isDark ? '#2d3f5e' : '#D4C4B0',
-          borderRadius: blobShapes[shapeIndex],
           width: '520px',
           height: '420px',
+
+          /* KEEP BLUE TONE */
+          background: isDark
+            ? 'rgba(45, 63, 94, 0.35)'   // bluish glass
+            : 'rgba(212,196,176,0.45)',
+
+          borderRadius: blobShapes[shapeIndex],
+
+          /* glass edge highlight */
+          border: isDark
+            ? '1px solid rgba(160,190,255,0.25)'
+            : '1px solid rgba(255,255,255,0.6)',
+
+          /* glossy reflection */
           boxShadow: isDark
-            ? 'inset 0 4px 20px rgba(0,0,0,0.5), 0 8px 32px rgba(0,0,0,0.4)'
-            : 'inset 0 4px 10px rgba(0,0,0,0.1), 0 6px 24px rgba(0,0,0,0.08)',
+            ? `
+              0 10px 45px rgba(0,0,0,0.55),
+              inset 0 2px 6px rgba(180,210,255,0.25),
+              inset 0 -2px 6px rgba(0,0,0,0.35)
+            `
+            : `
+              0 8px 30px rgba(0,0,0,0.12),
+              inset 0 2px 6px rgba(255,255,255,0.6)
+            `,
+
+          /* frosted blur */
+          backdropFilter: 'blur(35px)',
+          WebkitBackdropFilter: 'blur(35px)',
+
           transform: `scale(${scale})`,
-          transition: 'border-radius 2s ease-in-out, transform 1s ease-in-out, background-color 0.4s ease',
+
+          transition:
+            'border-radius 2s ease-in-out, transform 1s ease-in-out, background 0.4s ease'
         }}
       />
 
-      {/* Camera stays fixed */}
+      {/* Camera */}
       <div className="relative z-10">
         <MainCamera isDark={isDark} isCameraOn={isCameraOn} />
       </div>

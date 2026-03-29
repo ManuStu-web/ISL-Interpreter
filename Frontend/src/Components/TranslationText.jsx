@@ -2,7 +2,7 @@ import React from 'react'
 
 const TranslationText = ({ isDark, isTranslating }) => {
   return (
-    <div className='flex items-center justify-center w-96'>
+    <div className='w-[520px] flex items-center justify-center w-96'>
       <div
         className='text-4xl text-center leading-snug'
         style={{
