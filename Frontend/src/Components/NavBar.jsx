@@ -4,7 +4,7 @@ const NavBar = ({ isDark, setIsDark }) => {
   return (
     <div className='flex justify-between items-center px-10 mt-3 h-20'>
       <div>
-        <h1 style={{ fontFamily: 'Playfair Display, serif', color: isDark ? '#ffffff' : '#1a1a1a' }} className='text-5xl px-10 mt-7'>Zen ISL Interpreter</h1>
+        <h1 style={{ color: isDark ? '#ffffff' : '#1a1a1a' }} className='text-5xl px-10 mt-7'>Zen ISL Interpreter</h1>
         <p style={{ color: isDark ? '#a0aec0' : '#6b7280' }} className='text-base px-10 text-gray-600 tracking-widest uppercase'>Active Translation</p>
       </div>
 
