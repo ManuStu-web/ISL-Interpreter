@@ -15,18 +15,18 @@ const App = () => {
       <div className='min-h-screen flex flex-col justify-start' style={{
         backgroundColor: isDark ? '#0E1334' : '#eeeded',
         transition: 'all 0.4s ease'}}>
-          <NavBar isDark={isDark} setIsDark={setIsDark} />
         <Routes>
           <Route
             path="/"
             element={
               <>
+                <NavBar isDark={isDark} setIsDark={setIsDark} />
                 <Center isDark={isDark} />
                 <Footer isDark={isDark} />
               </>
             }
           />
-          <Route path="/about" element={<About isDark={isDark} />} />
+          <Route path="/about" element={<About isDark={isDark} setIsDark={setIsDark} />} />
         </Routes>
       </div>
     </div>
