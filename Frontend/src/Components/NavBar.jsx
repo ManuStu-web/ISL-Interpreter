@@ -18,6 +18,7 @@ const NavBar = ({ isDark, setIsDark }) => {
     shadow-xl
     transition-all duration-300
     hover:scale-110
+    active:scale-95
   "
         style={{
           background: isDark

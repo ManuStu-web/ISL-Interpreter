@@ -2,7 +2,7 @@ import React from 'react'
 
 const TopLeft = ({isDark}) => {
   return (
-    <div className='w-1/2 h-64 p-8 rounded-2xl flex flex-col justify-start gap-4' 
+    <div className='w-1/2 h-64 p-8 rounded-2xl flex flex-col justify-start gap-4 hover:scale-103' 
      style={{background: isDark ? "rgba(255,255,255,0.08)" : "rgba(248, 250,255, 1) " , boxShadow: isDark
             ? "0 8px 32px rgba(0,0,0,0.5)"
             : "0 8px 32px rgba(31,38,135,0.3)"}}>

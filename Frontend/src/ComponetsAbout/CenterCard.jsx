@@ -3,7 +3,7 @@ import React from 'react'
 const CenterCard = ({ index, title, desc, isDark }) => {
   return (
     <div
-      className='w-1/4 flex flex-col gap-3 items-center justify-center text-center'
+      className='w-1/4 flex flex-col gap-3 items-center justify-center text-center hover:scale-103'
       style={{ color: isDark ? 'white' : 'black' }}
     >
       <div
