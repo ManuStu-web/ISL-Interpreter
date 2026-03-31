@@ -30,7 +30,11 @@ const Center = ({ isDark }) => {
 
         {/* Stop/Start Translation button */}
         <button
-  onClick={() => setIsTranslating(!isTranslating)}
+  onClick={() => {
+    const nextState = !isTranslating;
+    setIsTranslating(nextState);
+    setIsCameraOn(nextState);
+  }}
   className="
     px-10 py-3
     rounded-full
