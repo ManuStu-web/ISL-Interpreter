@@ -11,14 +11,14 @@ const NavBar = ({ isDark, setIsDark }) => {
       <button
         onClick={() => setIsDark(!isDark)}
         className="
-    h-14 w-14 flex items-center justify-center
-    rounded-full
-    backdrop-blur-xl
-    border border-white/20
-    shadow-xl
-    transition-all duration-300
-    hover:scale-110
-    active:scale-95
+            h-14 w-14 flex items-center justify-center
+            rounded-full
+            backdrop-blur-xl
+            border border-white/20
+            shadow-xl
+            transition-all duration-300
+            hover:scale-110
+            active:scale-95
   "
         style={{
           background: isDark

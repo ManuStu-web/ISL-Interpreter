@@ -15,7 +15,7 @@ const Footer = ({ isDark }) => {
       inset 0 -1px 0 rgba(255,255,255,0.05)
     `
       }}>
-        {['About', 'Privacy', 'Contact'].map((item) => (
+        {['About', 'Contact'].map((item) => (
           <Link
             key={item}
             to={`/${item.toLowerCase()}`}
