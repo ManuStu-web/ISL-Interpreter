@@ -5,7 +5,9 @@ import Center from './Components/Center'
 import Footer from './Components/Footer'
 import About from './ComponetsAbout/About'
 import ISLModelTrainer from './Components/ISLModelTrainer'
+import Home from './pages/Home'
 import 'remixicon/fonts/remixicon.css'
+import Contact from './ComponetsAbout/Contact'
 
 const App = () => {
   const [isDark, setIsDark] = useState(true)
@@ -23,8 +25,9 @@ const App = () => {
         }}
       >
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route
-            path="/"
+            path="/app"
             element={
               <>
                 <NavBar isDark={isDark} setIsDark={setIsDark} />
@@ -44,12 +47,7 @@ const App = () => {
           <Route
             path="/contact"
             element={
-              <div style={{ padding: '3rem', color: isDark ? '#fff' : '#1a1a1a' }}>
-                <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Contact</h1>
-                <p style={{ maxWidth: '36rem', lineHeight: 1.6 }}>
-                  This page is not built yet. Use the home page to start translation.
-                </p>
-              </div>
+              <Contact isDark={isDark} />
             }
           />
           <Route path="*" element={<Navigate to="/" replace />} />
