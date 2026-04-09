@@ -36,6 +36,36 @@ function Home() {
 
   return (
     <div className={`homepage-scope ${isDark ? 'dark-theme' : 'light-theme'}`}>
+      <div className='fixed top-6 right-6 z-50 animate-fade-up delay-1'>
+        <button
+        onClick={() => setIsDark(!isDark)}
+        className="
+            h-14 w-14 flex items-center justify-center
+            rounded-full
+            backdrop-blur-xl
+            border border-white/20
+            shadow-xl
+            transition-all duration-300
+            hover:scale-110
+            active:scale-95
+  "
+        style={{
+          background: isDark
+            ? "rgba(255,255,255,0.08)"
+            : "rgba(255,255,255,0.45)",
+
+          boxShadow: isDark
+            ? "0 8px 32px rgba(0,0,0,0.5)"
+            : "0 8px 32px rgba(31,38,135,0.15)",
+
+          color: isDark ? "#fff" : "#1a1a1a"
+        }}
+      >
+        {isDark
+          ? <i className="ri-sun-line text-2xl"></i>
+          : <i className="ri-moon-line text-2xl"></i>}
+      </button>
+      </div>
       <div className="main-wrapper">
         <div className="app-container">
           <video
@@ -53,28 +83,22 @@ function Home() {
             <div className="hero-content">
               <div className="hero-badge animate-fade-up">
                 <span className="badge-new">New</span>
-                <span className="badge-text">First Commercial Flight to Mars 2026</span>
+                <span className="badge-text">Click "Try Now" to translate</span>
               </div>
-              
+
               <h1 className="hero-title animate-fade-up delay-1">
                 <span className="line-break">Giving Every Hand</span>
                 <span className="line-break">a Voice.</span>
               </h1>
-              
+
               <p className="hero-subtitle animate-fade-up delay-2">
                 Breaking communication barriers for 63 lakh+ individuals with real-time Indian Sign Language translation. No apps, no hardware—just your browser.
               </p>
-              
+
               <div className="hero-buttons animate-fade-up delay-3">
                 <Link to="/app" className="btn-glass">Try Now <span className="arrow">↗</span></Link>
                 <button className="btn-text" onClick={scrollToHelp}>Help <span className="play-icon">▷</span></button>
-                <button
-                  onClick={() => setIsDark(!isDark)}
-                  className="btn-glass"
-                  style={{ marginLeft: '1rem' }}
-                >
-                  {isDark ? 'Light' : 'Dark'}
-                </button>
+
               </div>
             </div>
           </div>
