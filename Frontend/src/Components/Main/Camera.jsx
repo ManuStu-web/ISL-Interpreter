@@ -10,13 +10,7 @@ const blobShapes = [
   '50% 50% 60% 40% / 65% 35% 55% 45%',
 ]
 
-/**
- * Camera
- *
- * Wraps MainCamera in the animated glass blob.
- * Passes videoRef down so useHandPose can reach the <video> element.
- */
-const Camera = ({ isDark, isCameraOn, landmarks, videoRef }) => {
+const Camera = ({ isDark, isCameraOn, videoRef }) => {
   const [shapeIndex, setShapeIndex] = useState(0)
   const [scale, setScale] = useState(1)
 
@@ -57,13 +51,11 @@ const Camera = ({ isDark, isCameraOn, landmarks, videoRef }) => {
           transition: 'border-radius 2s ease-in-out, transform 1s ease-in-out, background 0.4s ease',
         }}
       />
-      {/* MainCamera receives videoRef for ML access */}
       <div className="relative z-10">
         <MainCamera
           ref={videoRef}
           isDark={isDark}
           isCameraOn={isCameraOn}
-          landmarks={landmarks}
         />
       </div>
     </div>

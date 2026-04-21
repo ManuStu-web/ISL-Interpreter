@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
-import NavBar from './Components/NavBar'
-import Center from './Components/Center'
-import Footer from './Components/Footer'
-import About from './ComponetsAbout/About'
-import ISLModelTrainer from './Components/ISLModelTrainer'
-import Home from './pages/Home'
+import NavBar from './Components/Main/NavBar'
+import Center from './Components/Main/Center'
+import Footer from './Components/Main/Footer'
+import About from './Components/About/About'
+import Home from './Components/pages/Home'
+import Contact from './Components/About/Contact'
 import 'remixicon/fonts/remixicon.css'
-import Contact from './ComponetsAbout/Contact'
 
 const App = () => {
   const [isDark, setIsDark] = useState(true)
@@ -41,14 +40,8 @@ const App = () => {
             element={<About isDark={isDark} setIsDark={setIsDark} />}
           />
           <Route
-            path="/train"
-            element={<ISLModelTrainer isDark={isDark} />}
-          />
-          <Route
             path="/contact"
-            element={
-              <Contact isDark={isDark} />
-            }
+            element={<Contact isDark={isDark} />}
           />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
