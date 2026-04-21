@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@keyframes fadeInSlow {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeInSlow {
+  animation: fadeInSlow 1.5s ease-out 0.5s forwards; /* 0.5s delay */
+}

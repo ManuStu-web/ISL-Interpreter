@@ -4,25 +4,21 @@ const Contact = ({ isDark }) => {
   const teamMembers = [
     {
       name: "Manu Sharma",
-      role: "Full Stack Developer",
       github: "https://github.com/ManuStu-web",
       email: "Msharma.stu@gmail.com",
     },
     {
       name: "Ayush Yadav",
-      role: "Frontend Developer",
       github: "https://github.com/yadavayush834",
       email: "ayushyadav999999h@gmail.com",
     },
     {
       name: "Lalit Bhardwaj",
-      role: "Backend Developer",
       github: "https://github.com/lalitbhardwaj661-bot",
       email: "lalitbhardwaj661@gmail.com",
     },
     {
       name: "Harsh Wardhan",
-      role: "UI/UX Designer",
       github: "https://github.com/Harshdecodes",
       email: "harshwardhan4506@gmail.com",
     },
@@ -30,7 +26,7 @@ const Contact = ({ isDark }) => {
 
   const pageStyle = {
     backgroundColor: isDark ? "#0E1334" : "#eeeded",
-    flex: 1
+    flex: 1,
   };
 
   const cardStyle = {
@@ -47,7 +43,7 @@ const Contact = ({ isDark }) => {
   };
 
   return (
-    <div className="transition-all duration-300 mt-12" style={pageStyle}>
+    <div className="transition-all duration-300 mt-12 opacity-0 animate-fadeInSlow" style={pageStyle}>
       <div className="container mx-auto px-4 py-16">
         <h2
           className="text-5xl font-bold text-center mb-16"
@@ -99,6 +95,14 @@ const Contact = ({ isDark }) => {
             </div>
           ))}
         </div>
+
+        {/* Small tagline text */}
+        <p
+          className="mt-40 text-center text-2xl italic opacity-0 animate-fadeInSlow"
+          style={{ color: isDark ? "#e0e7ff" : "#333" }}
+        >
+          "Reach out — because every gesture matters"
+        </p>
       </div>
     </div>
   );

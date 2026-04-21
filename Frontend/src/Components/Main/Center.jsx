@@ -15,11 +15,51 @@ const Center = ({ isDark }) => {
     const next = !isTranslating
     setIsTranslating(next)
     setIsCameraOn(next)
+
     if (!next) {
       setSentence([])
       setCurrentWord('')
     }
   }
+
+  // ✅ Clean button styling logic
+  const getButtonStyles = () => {
+  if (isTranslating) {
+    return {
+      background: isDark
+        ? 'rgba(255, 107, 107, 0.15)'
+        : 'rgba(255, 90, 90, 0.28)',   // 👈 darker tint
+
+      color: isDark
+        ? '#ffffff'
+        : '#000000',                  // 👈 deeper red text
+
+      border: isDark
+        ? '1px solid rgba(255,107,107,0.5)'
+        : '1px solid rgba(255,90,90,0.6)', // 👈 stronger border
+
+      boxShadow: isDark
+        ? `0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35)`
+        : `0 6px 14px rgba(255,90,90,0.35)`, // 👈 slightly stronger glow
+    }
+  }
+
+  return {
+    background: isDark
+      ? 'rgba(255,255,255,0.08)'
+      : '#000000',
+
+    color: '#ffffff',
+
+    border: isDark
+      ? '1px solid rgba(255,255,255,0.25)'
+      : '1px solid rgba(0,0,0,0.85)',
+
+    boxShadow: isDark
+      ? `0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35)`
+      : `0 6px 18px rgba(0,0,0,0.25)`,
+  }
+}
 
   return (
     <div className='flex flex-col items-center justify-center w-full flex-1 gap-12 mt-30'>
@@ -34,9 +74,11 @@ const Center = ({ isDark }) => {
             videoRef={videoRef}
           />
         </div>
+
         <div className='flex items-center justify-center'>
           <Divider isDark={isDark} />
         </div>
+
         <div className='flex items-center justify-center'>
           <TranslationText
             isDark={isDark}
@@ -55,17 +97,7 @@ const Center = ({ isDark }) => {
           onClick={handleToggle}
           className="px-10 py-3 rounded-full text-lg tracking-wide border hover:scale-105 transition-transform duration-300 ease-out active:scale-95"
           style={{
-            background: isTranslating
-              ? 'rgba(255, 107, 107, 0.15)'
-              : isDark
-              ? 'rgba(255,255,255,0.08)'
-              : '#000000',
-            color: '#ffffff',
-            border: isTranslating
-              ? '1px solid rgba(255,107,107,0.5)'
-              : isDark
-              ? '1px solid rgba(255,255,255,0.25)'
-              : '1px solid rgba(0,0,0,0.85)',
+            ...getButtonStyles(),
             boxShadow: isDark
               ? `0 8px 32px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.35)`
               : `0 6px 18px rgba(0,0,0,0.25)`,

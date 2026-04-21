@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <div style={{
-      backgroundColor: isDark ? '#0E1334' : '#eeeded',
+      backgroundColor: isDark ? '#0E1334' : '#C9B9B9',
       transition: 'all 0.4s ease',
     }}>
       <div
