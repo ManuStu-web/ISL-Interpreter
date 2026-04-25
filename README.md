@@ -1,10 +1,8 @@
-<div align="center">
-
 # 🤟 ISL Interpreter
 
 ### Real-time Indian Sign Language to Text Converter
 
-*No app install required — works directly in your browser*
+> No app install required — works directly in your browser
 
 ![Demo Placeholder](https://placehold.co/800x400/1D9E75/ffffff?text=Demo+GIF+Coming+Soon)
 
@@ -15,39 +13,57 @@
 [![Java](https://img.shields.io/badge/Java-Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/)
 [![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
 
-</div>
+---
+
+## 📖 Table of Contents
+
+- [About](#-about-the-project)
+- [Features](#-features)
+- [Screenshots](#️-screenshots)
+- [Tech Stack](#️-tech-stack)
+- [How It Works](#-how-it-works)
+- [Project Architecture](#️-project-architecture)
+- [Getting Started](#-getting-started)
+- [Live Demo](#-live-demo)
+- [Roadmap](#-roadmap)
+- [License](#-license)
+- [Acknowledgements](#-acknowledgements)
 
 ---
 
 ## 🧠 About The Project
 
-India has **63 lakh+ deaf and hard-of-hearing individuals** who face communication barriers daily. Existing solutions require expensive hardware or app installations.
+India has **63 lakh+ deaf and hard-of-hearing individuals** who face communication barriers in daily life. Most existing solutions require expensive hardware, dedicated devices, or app installations that limit accessibility.
 
-**ISL Interpreter** is a browser-based web application that:
+**ISL Interpreter** bridges this gap with a fully browser-based web application that:
+
 - Detects hand gestures in **real-time** using your webcam
-- Converts Indian Sign Language gestures to **text and speech**
-- Works on **any device** with a browser — zero installation needed
-- Saves your **translation history** for later reference
+- Translates Indian Sign Language gestures into **text and speech**
+- Works on **any device with a modern browser** — zero installation needed
+- Saves your **translation history** for logged-in users
+
+Built as a **Project-I submission (Semester VI)**, this project demonstrates the practical application of computer vision and machine learning directly in the browser.
 
 ---
 
 ## ✨ Features
 
 | Feature | Description |
-|--------|-------------|
-| 🎥 Real-time Detection | Live webcam feed with instant gesture recognition |
-| 🤖 AI-Powered | MediaPipe Hands + TensorFlow.js for accurate classification |
-| 📝 Sentence Builder | Collects letters → forms complete words and sentences |
-| 🔊 Text to Speech | Converts translated text to audio output |
-| 📊 Confidence Score | Shows how confident the model is for each gesture |
-| 🗂️ History | Saves all translated sessions for logged-in users |
-| 🔐 Authentication | Secure user login and registration |
+|---|---|
+| 🎥 **Real-time Detection** | Live webcam feed with instant gesture recognition |
+| 🤖 **AI-Powered Classification** | MediaPipe Hands + TensorFlow.js for accurate ISL gesture recognition |
+| 📝 **Sentence Builder** | Collects recognized letters → assembles complete words and sentences |
+| 🔊 **Text-to-Speech** | Converts translated text to audio output for two-way communication |
+| 📊 **Confidence Score** | Displays model confidence percentage for each recognized gesture |
+| 🗂️ **Translation History** | Saves all translated sessions for logged-in users |
+| 🔐 **User Authentication** | Secure user registration and login system |
+| 🌐 **Zero Installation** | Runs entirely in the browser — no app or plugin required |
 
 ---
 
 ## 🖼️ Screenshots
 
-> *Screenshots will be added once the UI is complete*
+> Screenshots will be added once UI development is complete.
 
 | Translator Page | History Page |
 |---|---|
@@ -58,17 +74,17 @@ India has **63 lakh+ deaf and hard-of-hearing individuals** who face communicati
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React 18** — UI framework
-- **Tailwind CSS v4** — Styling
-- **MediaPipe Hands** — Hand landmark detection (21 points)
-- **TensorFlow.js** — Gesture classification using pre-trained ISL model
-- **Axios** — API communication
+- **React 18** — Component-based UI framework
+- **Tailwind CSS v4** — Utility-first styling
+- **MediaPipe Hands** — Real-time hand landmark detection (21 keypoints per hand)
+- **TensorFlow.js** — In-browser gesture classification using a pre-trained ISL model
+- **Axios** — HTTP client for API communication
 
 ### Backend
-- **Java Spring Boot** — REST API server
-- **Spring Security** — Authentication
-- **Spring Data JPA** — Database ORM
-- **MySQL** — Data storage
+- **Java Spring Boot** — RESTful API server
+- **Spring Security** — Authentication and authorization
+- **Spring Data JPA** — Database ORM layer
+- **MySQL** — Relational data storage
 
 ### Deployment
 - **Vercel** — Frontend hosting
@@ -77,43 +93,27 @@ India has **63 lakh+ deaf and hard-of-hearing individuals** who face communicati
 
 ---
 
-## 🚀 Getting Started
+## 🔄 How It Works
 
-### Prerequisites
-- Node.js v20+
-- Java JDK 17+
-- MySQL
-- Maven
-
-### Frontend Setup
-
-```bash
-# Clone the repo
-git clone https://github.com/ManuStu-web/ISL-Interpreter.git
-
-# Go to frontend
-cd ISL-Interpreter/frontend
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
 ```
-
-Open `http://localhost:5173` in your browser.
-
-### Backend Setup
-
-```bash
-# Go to backend
-cd ISL-Interpreter/backend
-
-# Run with Maven
-./mvnw spring-boot:run
+User shows hand gesture to webcam
+            ↓
+    getUserMedia (camera access)
+            ↓
+    Canvas API (frame capture at ~30fps)
+            ↓
+    MediaPipe Hands (extracts 21 hand landmarks)
+            ↓
+    TensorFlow.js (classifies gesture → ISL letter/word)
+            ↓
+    React UI (displays recognized text + confidence score)
+            ↓
+    Sentence Builder (accumulates letters → words → sentences)
+            ↓
+    Web Speech API (optional text-to-speech output)
+            ↓
+    Spring Boot REST API (saves session to history)
 ```
-
-> Configure your MySQL credentials in `application.properties` before running.
 
 ---
 
@@ -121,68 +121,150 @@ cd ISL-Interpreter/backend
 
 ```
 ISL-Interpreter/
-├── frontend/                  # React app (VS Code)
+├── Frontend/                        # React application
 │   ├── src/
-│   │   ├── components/        # Reusable UI components
-│   │   ├── pages/             # Translator, History, Login
+│   │   ├── components/              # Reusable UI components
+│   │   │   ├── Camera.jsx           # Webcam feed + canvas overlay
+│   │   │   ├── GestureDisplay.jsx   # Current gesture + confidence
+│   │   │   └── SentenceBuilder.jsx  # Text accumulation UI
+│   │   ├── pages/
+│   │   │   ├── Translator.jsx       # Main ISL interpreter page
+│   │   │   ├── History.jsx          # Saved sessions page
+│   │   │   └── Login.jsx            # Authentication page
+│   │   ├── hooks/                   # Custom React hooks
 │   │   └── App.jsx
 │   └── package.json
 │
-└── backend/                   # Spring Boot app (IntelliJ)
+└── Backend/                         # Spring Boot application
     ├── src/main/java/
-    │   ├── controller/        # REST API endpoints
-    │   ├── service/           # Business logic
-    │   ├── model/             # JPA entities
-    │   └── repository/        # Database layer
+    │   ├── controller/              # REST API endpoints
+    │   ├── service/                 # Business logic layer
+    │   ├── model/                   # JPA entity classes
+    │   └── repository/              # Database access layer
+    ├── src/main/resources/
+    │   └── application.properties   # Configuration (DB, security)
     └── pom.xml
 ```
 
 ---
 
-## 🔄 How It Works
+## 🚀 Getting Started
 
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js v20+](https://nodejs.org/)
+- [Java JDK 17+](https://adoptium.net/)
+- [MySQL 8+](https://dev.mysql.com/downloads/)
+- [Maven](https://maven.apache.org/) (or use the included `mvnw` wrapper)
+
+---
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/ManuStu-web/ISL-Interpreter.git
+cd ISL-Interpreter
 ```
-User shows hand gesture
-        ↓
-getUserMedia (webcam access)
-        ↓
-Canvas API (frame capture)
-        ↓
-MediaPipe Hands (21 landmarks)
-        ↓
-TensorFlow.js (gesture classification)
-        ↓
-React UI (display text)
-        ↓
-Spring Boot API (save history)
+
+---
+
+### 2. Frontend Setup
+
+```bash
+# Navigate to the frontend directory
+cd Frontend
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+> **Note:** Your browser will prompt for webcam access when you open the Translator page — this is required for gesture detection.
+
+---
+
+### 3. Backend Setup
+
+Before running the backend, configure your database credentials:
+
+```properties
+# src/main/resources/application.properties
+
+spring.datasource.url=jdbc:mysql://localhost:3306/isl_interpreter
+spring.datasource.username=YOUR_MYSQL_USERNAME
+spring.datasource.password=YOUR_MYSQL_PASSWORD
+spring.jpa.hibernate.ddl-auto=update
+```
+
+Then run the Spring Boot server:
+
+```bash
+# Navigate to the backend directory
+cd ../Backend
+
+# Run using Maven wrapper
+./mvnw spring-boot:run
+
+# Or on Windows
+mvnw.cmd spring-boot:run
+```
+
+The backend API will start at [http://localhost:8080](http://localhost:8080).
+
+---
+
+### 4. Create the MySQL Database
+
+```sql
+CREATE DATABASE isl_interpreter;
+```
+
+Spring Boot with `ddl-auto=update` will automatically create the required tables on first run.
 
 ---
 
 ## 🌐 Live Demo
 
-> 🔗 **[Coming Soon](#)** — Will be deployed on Vercel
+> 🔗 **[Coming Soon](#)** — Will be deployed on Vercel + Render
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Real-time hand landmark detection
+- [x] Gesture classification (ISL alphabets)
+- [x] Sentence builder
+- [x] Text-to-speech output
+- [x] User authentication
+- [x] Translation history
+- [ ] Live demo deployment
+- [ ] Support for ISL words (not just letters)
+- [ ] Mobile responsiveness improvements
+- [ ] Offline/PWA support
+- [ ] Multi-language text output
 
 ---
 
 ## 📄 License
 
-This project is built for educational purposes as part of **Project-I (Semester VI)**.
+This project was built for **educational purposes** as part of **Project-I (Semester VI)**. Feel free to use it as a reference, but please credit the original authors.
 
 ---
 
 ## 🙏 Acknowledgements
 
-- [MediaPipe](https://mediapipe.dev/) by Google
-- [TensorFlow.js](https://www.tensorflow.org/js)
-- [ISL Dataset](https://github.com/) — Pre-trained model
+- [MediaPipe](https://mediapipe.dev/) by Google — for the powerful hand landmark detection pipeline
+- [TensorFlow.js](https://www.tensorflow.org/js) — for enabling ML inference directly in the browser
+- [ISL Dataset & Pre-trained Model](https://github.com/) — gesture classification model
+- The **63 lakh+ deaf and hard-of-hearing Indians** who inspired this project
 
 ---
 
-<div align="center">
-
-Made with ❤️ for 63 lakh+ deaf and hard-of-hearing Indians
-
-⭐ Star this repo if you find it useful!
-
-</div>
+<p align="center">Made with ❤️ for 63 lakh+ deaf and hard-of-hearing Indians</p>
+<p align="center">⭐ Star this repo if you find it useful!</p>
